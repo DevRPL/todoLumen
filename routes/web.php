@@ -16,6 +16,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version() . "<br>"." Key_app => " . Str::random(32);
 });
 
-$router->get('/todo', 'TodoController@index');
-$router->get('/todo/{id}', 'TodoController@show');
-$router->post('/todo/store', 'TodoController@store');
+$router->get('/post', 'TodoController@index');
+$router->get('/post/{id}', 'TodoController@show');
+$router->post('/post/store', 'TodoController@store');
+$router->delete('/post/delete/{id}', 'TodoController@destroy');

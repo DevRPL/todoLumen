@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
 
-    protected $table = 'our_user_datas';
+    protected $table = 'blogs';
 
     protected $guarded = [];
+
+    public $timestamps =false;
+
+    public function user() {
+    	return $this->belongsTo('App\User', 'user_id');
+    }
 }

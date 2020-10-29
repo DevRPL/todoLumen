@@ -16,8 +16,10 @@ class TodoTableSeeder extends Seeder
 
         foreach (range(1,10) as $index) {
             Todo::create([
-                'name'  => $faker->name,
-                'contact_number' => $faker->phoneNumber
+                'user_id'  => 1,
+                'title' => $faker->name,
+                'body' => $faker->name,
+                'description' => $faker->address
             ]);
         }
     }

@@ -18,15 +18,17 @@ class TodoController extends Controller
 
     public function index()
     {
-        $data = Todo::all(['name', 'contact_number']);
+        $data = Todo::with('user')->get();
         
         return response($data);
+        
+            // return response()->json(['status' => 'success', 'data' => $doctors]);
     }
 
     public function show($id)
     {
         // $data = Todo::find($id)->get();
-        $data = Todo::where('id', $id)->get(['name', 'contact_number']);
+        $data = Todo::where('id', $id)->get();
 
         return response($data);
     }
@@ -34,7 +36,14 @@ class TodoController extends Controller
     public function store(Request $request)
     {
         $data = Todo::create($request->all());
-        $data['result'] = ['id' => $data->id, 'name' => $data->name, 'contact_number' => $data->contact_number];
-        return response($data['result']);
+
+        return response($data);
+    }
+
+    public function destroy($id)
+    {
+        $data = Todo::find($id)->delete();
+        
+        return response($data);
     }
 }
