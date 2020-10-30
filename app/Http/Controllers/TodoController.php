@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Entities\Todo;
 use Illuminate\Http\Request;
-
 class TodoController extends Controller
 {
     /**
@@ -19,22 +18,28 @@ class TodoController extends Controller
     public function index()
     {
         $data = Todo::with('user')->get();
-        
+
         return response($data);
-        
-            // return response()->json(['status' => 'success', 'data' => $doctors]);
     }
 
     public function show($id)
     {
-        // $data = Todo::find($id)->get();
-        $data = Todo::where('id', $id)->get();
+        $data = Todo::with('user')->find($id);
 
         return response($data);
     }
 
-    public function store(Request $request)
+    public function update(Request $request, $id)
     {
+        $data = Todo::find($id)
+            ->update($request->all());
+        return response($data);
+    }
+
+    public function store(Request $request)
+    {   
+        $request->merge(['user_id' => 1]);
+
         $data = Todo::create($request->all());
 
         return response($data);

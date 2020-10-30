@@ -19,4 +19,5 @@ $router->get('/', function () use ($router) {
 $router->get('/post', 'TodoController@index');
 $router->get('/post/{id}', 'TodoController@show');
 $router->post('/post/store', 'TodoController@store');
+$router->put('/post/update/{id}', 'TodoController@update');
 $router->delete('/post/delete/{id}', 'TodoController@destroy');
