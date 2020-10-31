@@ -22,6 +22,7 @@ $router->post('/post/store', 'TodoController@store');
 $router->put('/post/update/{id}', 'TodoController@update');
 $router->delete('/post/delete/{id}', 'TodoController@destroy');
 
-
 $router->get('getInformation', 'InformationController@index');
 $router->post('getInformation/store', 'InformationController@store');
+$router->delete('getInformation/destroy/{id}', 'InformationController@destroy');
+$router->delete('getInformation/deleteAll', 'InformationController@deleteAll');
