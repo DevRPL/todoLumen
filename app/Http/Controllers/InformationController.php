@@ -30,7 +30,13 @@ class InformationController extends Controller
             );
         } else {
             $result = Information::find($information->id)
-                ->update(['visit' => $information->visit + 1]);
+                ->update([
+                    'ip_address' => $request->ip(),
+                    'browser' =>  Browser::browserName(),
+                    'platform' => Browser::platformName(),
+                    'user_agent' => Browser::userAgent(),
+                    'visit' => $information->visit + 1
+                ]);
         }
 
         return response($result);
