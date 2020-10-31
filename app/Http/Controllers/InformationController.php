@@ -13,7 +13,7 @@ class InformationController extends Controller
         return response(Information::get());
 
     }
-
+    
     public function store(Request $request)
     {
         $information = Information::where('ip_address',  $request->ip())
@@ -40,5 +40,15 @@ class InformationController extends Controller
         }
 
         return response($result);
+    }
+    
+    public function destroy($id)
+    {
+        return response(Information::find($id)->delete());
+    }
+
+    public function deleteAll()
+    {
+        return response(Information::query()->delete());
     }
 }
