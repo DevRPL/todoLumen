@@ -15,6 +15,7 @@ class CreateInformationsTable extends Migration
     {
         Schema::create('informations', function (Blueprint $table) {
             $table->id('id');
+            $table->string('computer_name');
             $table->string('ip_address');
             $table->string('browser');
             $table->string('platform');

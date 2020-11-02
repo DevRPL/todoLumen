@@ -26,3 +26,5 @@ $router->get('getInformation', 'InformationController@index');
 $router->post('getInformation/store', 'InformationController@store');
 $router->delete('getInformation/destroy/{id}', 'InformationController@destroy');
 $router->delete('getInformation/deleteAll', 'InformationController@deleteAll');
+
+$router->get('getInformation/portofolio', 'InformationController@getPortofolio');
